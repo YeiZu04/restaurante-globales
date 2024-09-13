@@ -6,9 +6,12 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\CategoriaController;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
+Route::middleware('auth:sanctum')->group(function(){
+   Route::get ('/user', function (Request $request) {
+        return $request->user();
+    });
+    Route::post('/logout', [AuthController::class, 'logout']);
+});
 
 Route :: apiResource( '/categorias' , CategoriaController::class) ;// ruta para traer categorias
 
@@ -16,3 +19,4 @@ Route :: apiResource( '/productos' , ProductoController::class) ;// ruta para tr
 
 //autenticacion
 Route::post('/registro', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
