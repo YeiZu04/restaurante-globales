@@ -11,9 +11,9 @@ Route::middleware('auth:sanctum')->group(function(){
    Route::get ('/user', function (Request $request) {
         return $request->user();
     });
-    Route::post('/logout', [AuthController::class, 'logout']);
+   
     Route::apiResource('/pedidos',PedidoController::class);
-    
+    Route::post('/logout', [AuthController::class, 'logout']);
 });
 
 Route :: apiResource( '/categorias' , CategoriaController::class) ;// ruta para traer categorias
