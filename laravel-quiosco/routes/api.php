@@ -14,11 +14,12 @@ Route::middleware('auth:sanctum')->group(function(){
    
     Route::apiResource('/pedidos',PedidoController::class);
     Route::post('/logout', [AuthController::class, 'logout']);
+    Route :: apiResource( '/productos' , ProductoController::class) ;// ruta para traer productos
+    Route :: apiResource( '/categorias' , CategoriaController::class) ;// ruta para traer categorias
+
+    
 });
 
-Route :: apiResource( '/categorias' , CategoriaController::class) ;// ruta para traer categorias
-
-Route :: apiResource( '/productos' , ProductoController::class) ;// ruta para traer productos
 
 //autenticacion
 Route::post('/registro', [AuthController::class, 'register']);
